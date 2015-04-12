@@ -1,0 +1,15 @@
+<form>
+  <label for="name">Name</label>
+  <input type="text" id="name" ng-model="newTodo.name">
+  <label for="priority">Priority</label>
+  <input type="text" id="priority" ng-model="newTodo.priority">
+  <button class="btn btn-primary" ng-click="addTodo(newTodo)">Add Todo</button>
+</form>
+<ul>
+  <li ng-repeat="todo in todos track by $index">
+    <a href="/todos/{{todo._id}}">{{todo.name}} {{todo.priority}} {{todo.date | date}}</a>
+    <button class="btn btn-primary" ng-click="remove(todo)">Done</button>
+  </li>
+  <h4>Tasks to do: {{todos.length}}</h4>
+</ul>
+<button class="btn btn-primary" ng-click="clear()">Clear list</button>
