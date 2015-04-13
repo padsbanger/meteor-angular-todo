@@ -2,7 +2,7 @@
   <div class="input-group">
     <input type="text" class="form-control" ng-model="newTodo.name" placeholder="Your new TODO item">
     <span class="input-group-btn">
-        <button class="btn btn-default" ng-click="addTodo(newTodo); newTodo=''" type="button">Add</button>
+        <button class="btn btn-primary" ng-click="addTodo(newTodo); newTodo=''" ng-disabled="!newTodo" type="button">Add</button>
       </span>
   </div>
   <div class="row">
@@ -29,7 +29,7 @@
   </div>
   <div class="row">
     <p>
-      <button class="btn btn-primary" ng-click="clear()">Clear list</button>
+      <button ng-disabled="todos.length === 0" class="btn btn-primary" ng-click="clear()">Clear list</button>
       Todos left: <strong>{{todos.length}}</strong></p>
   </div>
 </div>

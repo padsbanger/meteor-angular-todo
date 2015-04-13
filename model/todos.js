@@ -9,5 +9,6 @@ Todos.allow({
   },
   remove: function(userId) {
     return userId;
-  }
+  },
+  fetch: ['owner']
 });
