@@ -3,10 +3,17 @@
 </head>
 
 <body>
-  <div ng-app="todo">
-    <h1>
-      <a href="/todos">Home</a>
-    </h1>
-    <div ui-view></div>
+  <div class="container">
+    <div ng-app="todo">
+      <div class="row">
+        <meteor-include src="loginButtons"></meteor-include>
+      </div>
+      <div class="row">
+        <h1>
+        <a href="/todos">Home</a>
+      </h1>
+      </div>
+      <div ui-view></div>
+    </div>
   </div>
 </body>

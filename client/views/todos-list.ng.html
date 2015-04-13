@@ -1,15 +1,35 @@
-<form>
-  <label for="name">Name</label>
-  <input type="text" id="name" ng-model="newTodo.name">
-  <label for="priority">Priority</label>
-  <input type="text" id="priority" ng-model="newTodo.priority">
-  <button class="btn btn-primary" ng-click="addTodo(newTodo)">Add Todo</button>
-</form>
-<ul>
-  <li ng-repeat="todo in todos track by $index">
-    <a href="/todos/{{todo._id}}">{{todo.name}} {{todo.priority}} {{todo.date | date}}</a>
-    <button class="btn btn-primary" ng-click="remove(todo)">Done</button>
-  </li>
-  <h4>Tasks to do: {{todos.length}}</h4>
-</ul>
-<button class="btn btn-primary" ng-click="clear()">Clear list</button>
+<div ng-show="$root.currentUser">
+  <div class="input-group">
+    <input type="text" class="form-control" ng-model="newTodo.name" placeholder="Your new TODO item">
+    <span class="input-group-btn">
+        <button class="btn btn-default" ng-click="addTodo(newTodo); newTodo=''" type="button">Add</button>
+      </span>
+  </div>
+  <div class="row">
+    <table class="table table-condensed table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Name</th>
+          <th>Date</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody class="table-hover">
+        <tr ng-repeat="todo in todos | orderBy:'-date'" ng-click="goToToDo(todo._id)">
+          <th scope="row">{{todo._id}}</th>
+          <td>{{todo.name}}</td>
+          <td>{{todo.date| date: 'MM.dd - HH:mm:ss'}}</td>
+          <td ng-click="remove(todo)">
+            <button class="btn btn-default">Done</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+    <p>
+      <button class="btn btn-primary" ng-click="clear()">Clear list</button>
+      Todos left: <strong>{{todos.length}}</strong></p>
+  </div>
+</div>
